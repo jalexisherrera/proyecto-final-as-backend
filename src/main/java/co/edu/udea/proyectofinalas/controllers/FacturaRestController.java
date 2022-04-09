@@ -5,7 +5,6 @@ import java.util.List;
 import co.edu.udea.proyectofinalas.models.entity.Factura;
 import co.edu.udea.proyectofinalas.models.entity.Producto;
 import co.edu.udea.proyectofinalas.models.services.IClienteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,6 +25,10 @@ public class FacturaRestController {
 
 
     private IClienteService clienteService;
+
+    public FacturaRestController(IClienteService clienteService) {
+        this.clienteService = clienteService;
+    }
 
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/facturas/{id}")
